@@ -1,0 +1,100 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title><h1>Phychic game</h1
+  </title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body background="http://goldwallpapers.com/uploads/posts/matrix-wallpaper-1920x1080/matrix_wallpaper_1920x1080_011.jpg"
+
+  <div id="game">
+    <h1 class="user">User presses 0, 1, 2, 3, 4, 5, 6, ,7 or 8, or 0</h1>
+
+  </div>
+
+<div id="wins">
+</div>
+<br>
+<div id="loses">
+
+<br>
+</div>
+
+<br>
+
+<div id="ties">
+
+
+</div>
+<script type="text/javascript">
+
+
+    // Creates an array that lists out all of the options (2, 8, or 0).
+        var computerChoices = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    //variable to hold the win. This is set to zero because we are going to add 1 each time the user wins
+        var wins = 0;
+    //variable to hold the loses. This is set to zero because we are going to add 1 each time the computer wins
+        var loses = 0;
+    //variable to hold the ties. This is set to zero because we are going to add 1 each time the computer and the user matches the guess.
+        var tie = 0;
+        var counter = 9;
+    // This function is run whenever the user presses a key.
+      document.onkeyup = function(event){
+        if (counter > 0){
+
+          counter--;
+
+
+
+                      // Determines which key was pressed.
+                      var userGuess = event.key;
+                      document.getElementById("ties").innerHTML="<h1>Tie :" + tie + "</h1>";
+
+                      if(counter > 0){
+
+
+                          // Randomly chooses a choice from the options array. This is the Computer's guess.
+                          var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+                          //Conditionals to evaluate the possibilities chosen by the user and the computer
+                          //remember that the variables outside of this function were set to 0, so depending on the condition we are going to add 1. like this variablename++
+                          //rememebr that && means equal
+                          //remeber that || means or (IT IS NOT USED HERE)
+
+                          if(parseInt(userGuess) > parseInt(computerGuess)){
+                            wins++;
+                          } else if(parseInt(userGuess) < parseInt(computerGuess)){
+                            loses++;
+                          } else if(parseInt(userGuess) === parseInt(computerGuess)){
+                            tie++;
+                          }
+
+                          //Alerting what the user pressed:
+                          alert("user guess: " + userGuess);
+                          //Alerting what the computer picked:
+                          alert("Computer guess: "+ computerGuess);
+
+                          //getElementByID will go and find a tag element that has an specific ID.
+                          //innerHTML will print inside the tag element anything after the equal sign.
+                          //After the equalsign you have a string plus a variable (concatenate).
+
+                          document.getElementById("wins").innerHTML="<h1>Wins :" + wins +"</h1>";
+                          document.getElementById("loses").innerHTML="<h1>Loses :" + loses + "</h1>";
+                          document.getElementById("ties").innerHTML="<h1>Tie :" + tie + "</h1>";
+                        }
+                        else {
+                        alert("Game Over!")
+                        window.location.reload("#")
+                        }
+                      }
+                    }
+
+  </script>
+
+</body>
+
+</html>

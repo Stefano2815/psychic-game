@@ -1,0 +1,19 @@
+#wins {
+  color: orange;
+  text-align: left;
+}
+
+#loses {
+  color: pink;
+  text-align: left;
+}
+
+#ties {
+  color: purple;
+text-align: left;
+}
+
+
+.user{
+  color: red;
+}
